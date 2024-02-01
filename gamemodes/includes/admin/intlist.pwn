@@ -1,20 +1,11 @@
 /*
 
-	 /$$   /$$  /$$$$$$          /$$$$$$$  /$$$$$$$
-	| $$$ | $$ /$$__  $$        | $$__  $$| $$__  $$
-	| $$$$| $$| $$  \__/        | $$  \ $$| $$  \ $$
-	| $$ $$ $$| $$ /$$$$ /$$$$$$| $$$$$$$/| $$$$$$$/
-	| $$  $$$$| $$|_  $$|______/| $$__  $$| $$____/
-	| $$\  $$$| $$  \ $$        | $$  \ $$| $$
-	| $$ \  $$|  $$$$$$/        | $$  | $$| $$
-	|__/  \__/ \______/         |__/  |__/|__/
-
 						House List Module
 
-				Next Generation Gaming, LLC
-	(created by Next Generation Gaming Development Team)
+				 Astrix Gaming, LLC
+	(created by  Astrix Gaming Development Team)
 					
-	* Copyright (c) 2016, Next Generation Gaming, LLC
+	* Copyright (c) 2016,  Astrix Gaming, LLC
 	*
 	* All rights reserved.
 	*

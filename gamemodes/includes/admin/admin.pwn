@@ -1,20 +1,10 @@
 /*
-
-	 /$$   /$$  /$$$$$$          /$$$$$$$  /$$$$$$$
-	| $$$ | $$ /$$__  $$        | $$__  $$| $$__  $$
-	| $$$$| $$| $$  \__/        | $$  \ $$| $$  \ $$
-	| $$ $$ $$| $$ /$$$$ /$$$$$$| $$$$$$$/| $$$$$$$/
-	| $$  $$$$| $$|_  $$|______/| $$__  $$| $$____/
-	| $$\  $$$| $$  \ $$        | $$  \ $$| $$
-	| $$ \  $$|  $$$$$$/        | $$  | $$| $$
-	|__/  \__/ \______/         |__/  |__/|__/
-
 						Admin System
 
-				Next Generation Gaming, LLC
-	(created by Next Generation Gaming Development Team)
+				Astrix Gaming, LLC
+	(created by Astrix Gaming Development Team)
 
-	* Copyright (c) 2016, Next Generation Gaming, LLC
+	* Copyright (c) 2024, Astrix Gaming, LLC
 	*
 	* All rights reserved.
 	*
@@ -48,7 +38,7 @@ stock IsAdminLevel(playerid, level, warning = 1) {
 	return 0;
 }
 
-stock ABroadCast(hColor, szMessage[], iLevel, bool: bUndercover = false, bool: Discord = true)
+stock ABroadCast(hColor, szMessage[], iLevel, bool: bUndercover = false)//bool: Discord = true)
 {
 	foreach(new i: Player) {
 		if(PlayerInfo[i][pAdmin] >= iLevel && (bUndercover || !PlayerInfo[i][pTogReports])) {
@@ -74,7 +64,7 @@ stock ShopTechBroadCast(color,string[])
 stock Player_KillCheckPoint(playerid) {
 	if(PlayerInfo[playerid][pTut] != -1) {
 		SendClientMessageEx(playerid, COLOR_GREY, "-----------------------------");
-		SendClientMessageEx(playerid, COLOR_WHITE, "You have canceled the objectives tutorial. Welcome to Next Generation Gaming!");
+		SendClientMessageEx(playerid, COLOR_WHITE, "You have canceled the objectives tutorial. Welcome to Astrix Gaming!");
 		SendClientMessageEx(playerid, COLOR_GREY, "-----------------------------");
 		PlayerInfo[playerid][pTut] = -1;
 	}
@@ -1840,7 +1830,7 @@ CMD:sadmindd(playerid, params[])  {
 			}
 		}
 		else SendClientMessageEx(playerid, COLOR_GRAD2, "Invalid player specified.");
-	return 1;
+		return 1;
 }
 CMD:makeadmin(playerid, params[])  {
 

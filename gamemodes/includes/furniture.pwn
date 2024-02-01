@@ -623,7 +623,6 @@ public OnPlayerSelectDynamicObject(playerid, objectid, modelid, Float:x, Float:y
 	return 1;	
 }
 
-
 timer FurnitureControl[1000](playerid, Float:X, Float:Y, Float:Z) {
 	TogglePlayerControllable(playerid, true);
 	SetPlayerPos(playerid, X, Y, Z);
@@ -631,36 +630,37 @@ timer FurnitureControl[1000](playerid, Float:X, Float:Y, Float:Z) {
 
 
 timer FurnitureEditObject[5000](playerid) {
-	
-	new Float:fPos[6];
-	GetPlayerPos(playerid, fPos[0], fPos[1], fPos[2]);
-	if(!GetPVarType(playerid, "furnfirst")) {
+    new Float:fPos[6];
+    GetPlayerPos(playerid, fPos[0], fPos[1], fPos[2]);
 
-		SetPVarInt(playerid, "furnfirst", 1);
-		SetPVarFloat(playerid, "PX", fPos[0]);
-		SetPVarFloat(playerid, "PY", fPos[1]);
-		SetPVarFloat(playerid, "PZ", fPos[2]);
-		defer FurnitureEditObject(playerid);
-		return 1;
-	}
-	fPos[3] = GetPVarFloat(playerid, "PX");
-	fPos[4] = GetPVarFloat(playerid, "PY");
-	fPos[5] = GetPVarFloat(playerid, "PZ");
-	if(!IsPlayerInRangeOfPoint(playerid, 15.0, fPos[3], fPos[4], fPos[5])) {
+    if (!GetPVarType(playerid, "furnfirst")) {
+        SetPVarInt(playerid, "furnfirst", 1);
+        SetPVarFloat(playerid, "PX", fPos[0]);
+        SetPVarFloat(playerid, "PY", fPos[1]);
+        SetPVarFloat(playerid, "PZ", fPos[2]);
+        defer FurnitureEditObject(playerid);
+        return 1;
+    }
 
-		CancelEdit(playerid);
-		DeletePVar(playerid, "furnfirst");
-		new iHouseID = GetPVarInt(playerid, PVAR_INHOUSE);
-			return 1;
-	}
-	if(fPos[5] > (fPos[2] + 2.0)) {
+    fPos[3] = GetPVarFloat(playerid, "PX");
+    fPos[4] = GetPVarFloat(playerid, "PY");
+    fPos[5] = GetPVarFloat(playerid, "PZ");
 
-		CancelEdit(playerid);
-		DeletePVar(playerid, "furnfirst");
-		new iHouseID = GetPVarInt(playerid, PVAR_INHOUSE);
-			return 1;
-	}
-	return 1;
+    if (!IsPlayerInRangeOfPoint(playerid, 15.0, fPos[3], fPos[4], fPos[5])) {
+        CancelEdit(playerid);
+        DeletePVar(playerid, "furnfirst");
+        new iHouseID = GetPVarInt(playerid, PVAR_INHOUSE);
+        return 1;
+    }
+
+    if (fPos[5] > (fPos[2] + 2.0)) {
+        CancelEdit(playerid);
+        DeletePVar(playerid, "furnfirst");
+        new iHouseID = GetPVarInt(playerid, PVAR_INHOUSE);
+        return 1;
+    }
+
+    return 1;
 }
 
 timer Furniture_HousePosition[5000](playerid, iHouseID) {
@@ -1046,92 +1046,86 @@ stock LoadFurniture() {
 }
 
 forward OnLoadFurniture();
+
 public OnLoadFurniture() {
+    new iRows, iCount, value, Float:fValue;
+    cache_get_row_count(iRows);
 
-	new iRows, iCount, value, Float:fValue;
-	cache_get_row_count(iRows);
+    for (iCount = 0; iCount < iRows; ++iCount) {
+        cache_get_value_name_int(iCount, "houseid", arrFurnitures[iCount][fhouseids]);
+        cache_get_value_name_int(iCount, "slotid", arrFurnitures[iCount][slotids]);
+        cache_get_value_name_int(iCount, "modelid", arrFurnitures[iCount][fModelss]);
+        cache_get_value_name_float(iCount, "x", arrFurnitures[iCount][Fposx]);
+        cache_get_value_name_float(iCount, "y", arrFurnitures[iCount][Fposy]);
+        cache_get_value_name_float(iCount, "z", arrFurnitures[iCount][Fposz]);
+        cache_get_value_name_float(iCount, "rx", arrFurnitures[iCount][Fposxs]);
+        cache_get_value_name_float(iCount, "ry", arrFurnitures[iCount][Fposys]);
+        cache_get_value_name_float(iCount, "rz", arrFurnitures[iCount][Fposzs]);
+        cache_get_value_name_int(iCount, "text0", arrFurnitures[iCount][texts0]);
+        cache_get_value_name_int(iCount, "text1", arrFurnitures[iCount][texts1]);
+        cache_get_value_name_int(iCount, "text2", arrFurnitures[iCount][texts2]);
+        cache_get_value_name_int(iCount, "text3", arrFurnitures[iCount][texts3]);
+        cache_get_value_name_int(iCount, "text4", arrFurnitures[iCount][texts4]);
+        cache_get_value_name_int(iCount, "col0", arrFurnitures[iCount][cols0]);
+        cache_get_value_name_int(iCount, "col1", arrFurnitures[iCount][cols1]);
+        cache_get_value_name_int(iCount, "col2", arrFurnitures[iCount][cols2]);
+        cache_get_value_name_int(iCount, "col3", arrFurnitures[iCount][cols3]);
+        cache_get_value_name_int(iCount, "col4", arrFurnitures[iCount][cols4]);
 
-		for(iCount = 0; iCount < iRows; ++iCount) {
+        ProcessFurniture(arrFurnitures[iCount][fhouseids], arrFurnitures[iCount][slotids], arrFurnitures[iCount][fModelss], arrFurnitures[iCount][Fposx], arrFurnitures[iCount][Fposy], arrFurnitures[iCount][Fposz], arrFurnitures[iCount][Fposxs], arrFurnitures[iCount][Fposys], arrFurnitures[iCount][Fposzs], arrFurnitures[iCount][texts0], arrFurnitures[iCount][texts1], arrFurnitures[iCount][texts2], arrFurnitures[iCount][texts3], arrFurnitures[iCount][texts4], arrFurnitures[iCount][cols0], arrFurnitures[iCount][cols1], arrFurnitures[iCount][cols2], arrFurnitures[iCount][cols3], arrFurnitures[iCount][cols4]);
+    }
 
-          	cache_get_value_name_int(iCount, "houseid", arrFurnitures[iCount][fhouseids]);
-			cache_get_value_name_int(iCount, "slotid", arrFurnitures[iCount][slotids]);
-			cache_get_value_name_int(iCount, "modelid", arrFurnitures[iCount][fModelss]);
-			cache_get_value_name_float(iCount, "x", arrFurnitures[iCount][Fposx]);
-			cache_get_value_name_float(iCount, "y", arrFurnitures[iCount][Fposy]);
-			cache_get_value_name_float(iCount, "z", arrFurnitures[iCount][Fposz]);
-			cache_get_value_name_float(iCount, "rx", arrFurnitures[iCount][Fposxs]);
-			cache_get_value_name_float(iCount, "ry", arrFurnitures[iCount][Fposys]);
-			cache_get_value_name_float(iCount, "rz", arrFurnitures[iCount][Fposzs]);
-			cache_get_value_name_int(iCount, "text0", arrFurnitures[iCount][texts0]);
-			cache_get_value_name_int(iCount, "text1", arrFurnitures[iCount][texts1]);
-			cache_get_value_name_int(iCount, "text2", arrFurnitures[iCount][texts2]);
-			cache_get_value_name_int(iCount, "text3", arrFurnitures[iCount][texts3]);
-			cache_get_value_name_int(iCount, "text4", arrFurnitures[iCount][texts4]);
-			cache_get_value_name_int(iCount, "col0", arrFurnitures[iCount][cols0]);
-			cache_get_value_name_int(iCount, "col1", arrFurnitures[iCount][cols1]);
-			cache_get_value_name_int(iCount, "col2", arrFurnitures[iCount][cols2]);
-			cache_get_value_name_int(iCount, "col3", arrFurnitures[iCount][cols3]);
-			cache_get_value_name_int(iCount, "col4", arrFurnitures[iCount][cols4]);
-			
-		ProcessFurniture(arrFurnitures[iCount][fhouseids],arrFurnitures[iCount][slotids],arrFurnitures[iCount][fModelss],arrFurnitures[iCount][Fposx],arrFurnitures[iCount][Fposy],arrFurnitures[iCount][Fposz],arrFurnitures[iCount][Fposxs],arrFurnitures[iCount][Fposys],arrFurnitures[iCount][Fposzs],arrFurnitures[iCount][texts0],arrFurnitures[iCount][texts1],arrFurnitures[iCount][texts2],arrFurnitures[iCount][texts3],arrFurnitures[iCount][texts4],arrFurnitures[iCount][cols0],arrFurnitures[iCount][cols1],arrFurnitures[iCount][cols2],arrFurnitures[iCount][cols3],arrFurnitures[iCount][cols4]);
-
-  }
-	//return printf("[Furniture] Loaded %d pieces of furniture from the database.", iCount);
-	return 1;
+    //return printf("[Furniture] Loaded %d pieces of furniture from the database.", iCount);
+    return 1;
 }
 
-
 forward OnRehashHouseFurniture(iHouseID);
+
 public OnRehashHouseFurniture(iHouseID) {
+    new iRows;
+    cache_get_row_count(iRows);
+    if (!iRows) return 1;
 
-	new iRows;
-	cache_get_row_count(iRows);
-	if(!iRows) return 1;
+    new iCount, value, Float:fValue;
+    for (iCount = 0; iCount < iRows; ++iCount) {
+        cache_get_value_name_int(iCount, "houseid", arrFurnitures[iCount][fhouseids]);
+        cache_get_value_name_int(iCount, "slotid", arrFurnitures[iCount][slotids]);
+        cache_get_value_name_int(iCount, "modelid", arrFurnitures[iCount][fModelss]);
+        cache_get_value_name_float(iCount, "x", arrFurnitures[iCount][Fposx]);
+        cache_get_value_name_float(iCount, "y", arrFurnitures[iCount][Fposy]);
+        cache_get_value_name_float(iCount, "z", arrFurnitures[iCount][Fposz]);
+        cache_get_value_name_float(iCount, "rx", arrFurnitures[iCount][Fposxs]);
+        cache_get_value_name_float(iCount, "ry", arrFurnitures[iCount][Fposys]);
+        cache_get_value_name_float(iCount, "rz", arrFurnitures[iCount][Fposzs]);
+        cache_get_value_name_int(iCount, "text0", arrFurnitures[iCount][texts0]);
+        cache_get_value_name_int(iCount, "text1", arrFurnitures[iCount][texts1]);
+        cache_get_value_name_int(iCount, "text2", arrFurnitures[iCount][texts2]);
+        cache_get_value_name_int(iCount, "text3", arrFurnitures[iCount][texts3]);
+        cache_get_value_name_int(iCount, "text4", arrFurnitures[iCount][texts4]);
+        cache_get_value_name_int(iCount, "col0", arrFurnitures[iCount][cols0]);
+        cache_get_value_name_int(iCount, "col1", arrFurnitures[iCount][cols1]);
+        cache_get_value_name_int(iCount, "col2", arrFurnitures[iCount][cols2]);
+        cache_get_value_name_int(iCount, "col3", arrFurnitures[iCount][cols3]);
+        cache_get_value_name_int(iCount, "col4", arrFurnitures[iCount][cols4]);
 
-	new iCount, value, Float:fValue;
-	for(iCount = 0; iCount < iRows; ++iCount) {
-         
-		           	cache_get_value_name_int(iCount, "houseid", arrFurnitures[iCount][fhouseids]);
-			cache_get_value_name_int(iCount, "slotid", arrFurnitures[iCount][slotids]);
-			cache_get_value_name_int(iCount, "modelid", arrFurnitures[iCount][fModelss]);
-			cache_get_value_name_float(iCount, "x", arrFurnitures[iCount][Fposx]);
-			cache_get_value_name_float(iCount, "y", arrFurnitures[iCount][Fposy]);
-			cache_get_value_name_float(iCount, "z", arrFurnitures[iCount][Fposz]);
-			cache_get_value_name_float(iCount, "rx", arrFurnitures[iCount][Fposxs]);
-			cache_get_value_name_float(iCount, "ry", arrFurnitures[iCount][Fposys]);
-			cache_get_value_name_float(iCount, "rz", arrFurnitures[iCount][Fposzs]);
-			cache_get_value_name_int(iCount, "text0", arrFurnitures[iCount][texts0]);
-			cache_get_value_name_int(iCount, "text1", arrFurnitures[iCount][texts1]);
-			cache_get_value_name_int(iCount, "text2", arrFurnitures[iCount][texts2]);
-			cache_get_value_name_int(iCount, "text3", arrFurnitures[iCount][texts3]);
-			cache_get_value_name_int(iCount, "text4", arrFurnitures[iCount][texts4]);
-			cache_get_value_name_int(iCount, "col0", arrFurnitures[iCount][cols0]);
-			cache_get_value_name_int(iCount, "col1", arrFurnitures[iCount][cols1]);
-			cache_get_value_name_int(iCount, "col2", arrFurnitures[iCount][cols2]);
-			cache_get_value_name_int(iCount, "col3", arrFurnitures[iCount][cols3]);
-			cache_get_value_name_int(iCount, "col4", arrFurnitures[iCount][cols4]);
+        ProcessFurniture(arrFurnitures[iCount][fhouseids], arrFurnitures[iCount][slotids], arrFurnitures[iCount][fModelss], arrFurnitures[iCount][Fposx], arrFurnitures[iCount][Fposy], arrFurnitures[iCount][Fposz], arrFurnitures[iCount][Fposxs], arrFurnitures[iCount][Fposys], arrFurnitures[iCount][Fposzs], arrFurnitures[iCount][texts0], arrFurnitures[iCount][texts1], arrFurnitures[iCount][texts2], arrFurnitures[iCount][texts3], arrFurnitures[iCount][texts4], arrFurnitures[iCount][cols0], arrFurnitures[iCount][cols1], arrFurnitures[iCount][cols2], arrFurnitures[iCount][cols3], arrFurnitures[iCount][cols4]);
+    }
 
-					
-		ProcessFurniture(arrFurnitures[iCount][fhouseids],arrFurnitures[iCount][slotids],arrFurnitures[iCount][fModelss],arrFurnitures[iCount][Fposx],arrFurnitures[iCount][Fposy],arrFurnitures[iCount][Fposz],arrFurnitures[iCount][Fposxs],arrFurnitures[iCount][Fposys],arrFurnitures[iCount][Fposzs],arrFurnitures[iCount][texts0],arrFurnitures[iCount][texts1],arrFurnitures[iCount][texts2],arrFurnitures[iCount][texts3],arrFurnitures[iCount][texts4],arrFurnitures[iCount][cols0],arrFurnitures[iCount][cols1],arrFurnitures[iCount][cols2],arrFurnitures[iCount][cols3],arrFurnitures[iCount][cols4]);
-
-	}
-	return printf("[Furniture] Loaded %d pieces of furniture from the database.", iCount);
+    return printf("[Furniture] Loaded %d pieces of furniture from the database.", iCount);
 }
 
 // Check first/last visitor
 // House_VistorCheck(playerid, iHouseID, choice) {
 House_VistorCheck(iHouseID) {
-
 	if(!HouseInfo[iHouseID][hFurnitureLoaded]) {
-
 		HouseInfo[iHouseID][hFurnitureLoaded] = 1;
-	
 		
-			for(new o = 0; o < MAX_FURNITURE_SLOTS; o++) {
-			HouseInfo[iHouseID][hFurniture][o] = -1;
-			}
-				mysql_format(MainPipeline, szMiscArray, sizeof(szMiscArray), "SELECT * FROM `furniture` WHERE `houseid` = '%d'", iHouseID);
-					mysql_tquery(MainPipeline, szMiscArray, "OnLoadFurniture", "");
+		for(new o = 0; o < MAX_FURNITURE_SLOTS; o++) {
+				HouseInfo[iHouseID][hFurniture][o] = -1;
+	}
+
+		mysql_format(MainPipeline, szMiscArray, sizeof(szMiscArray), "SELECT * FROM `furniture` WHERE `houseid` = '%d'", iHouseID);
+		mysql_tquery(MainPipeline, szMiscArray, "OnLoadFurniture", "");
 
 
 		/*

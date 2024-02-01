@@ -1,17 +1,7 @@
-/*
-    	 		 /$$   /$$  /$$$$$$          /$$$$$$$  /$$$$$$$
-				| $$$ | $$ /$$__  $$        | $$__  $$| $$__  $$
-				| $$$$| $$| $$  \__/        | $$  \ $$| $$  \ $$
-				| $$ $$ $$| $$ /$$$$ /$$$$$$| $$$$$$$/| $$$$$$$/
-				| $$  $$$$| $$|_  $$|______/| $$__  $$| $$____/
-				| $$\  $$$| $$  \ $$        | $$  \ $$| $$
-				| $$ \  $$|  $$$$$$/        | $$  | $$| $$
-				|__/  \__/ \______/         |__/  |__/|__/
-
 //--------------------------------[MYSQL.PWN]--------------------------------
+/*
 
-
- * Copyright (c) 2016, Next Generation Gaming, LLC
+ * Copyright (c) 2024, Astrix Gaming, LLC
  *
  * All rights reserved.
  *
@@ -1164,7 +1154,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 								if(PlayerInfo[x][pAdmin] < 1337 && (PlayerInfo[x][pAdmin] >= 2 || PlayerInfo[x][pWatchdog] >= 2))
 								{
 									format(string, sizeof(string), "%s passed whitelist auth. Secure IP: %s | Connected IP: %s", GetPlayerNameEx(extraid), secureip, GetPlayerIpEx(extraid));
-					Log("logs/whitelist.log", string);
+									Log("logs/whitelist.log", string);
 
 								}
 								else if(PlayerInfo[x][pAdmin] >= 1337)
@@ -1172,13 +1162,13 @@ public OnQueryFinish(resultid, extraid, handleid)
 									if(alevel >= 1337) // If the person being checked for the whitelist is a HA+
 									{
 									format(string, sizeof(string), "%s passed whitelist auth. Secure IP: %s | Connected IP: %s", GetPlayerNameEx(extraid), secureip, GetPlayerIpEx(extraid));
-					Log("logs/whitelist.log", string);
+									Log("logs/whitelist.log", string);
 
 									}
 									else
 									{
 										format(string, sizeof(string), "%s passed whitelist auth. Secure IP: %s | Connected IP: %s", GetPlayerNameEx(extraid), secureip, GetPlayerIpEx(extraid));
-					Log("logs/whitelist.log", string);
+										Log("logs/whitelist.log", string);
 
 									}
 								}
@@ -1187,7 +1177,7 @@ public OnQueryFinish(resultid, extraid, handleid)
 					format(string, sizeof(string), "%s passed whitelist auth. Secure IP: %s | Connected IP: %s", GetPlayerNameEx(extraid), secureip, GetPlayerIpEx(extraid));
 					Log("logs/whitelist.log", string);
 
-						return true;
+ 					return true;
 					}
 					format(string, sizeof(string), "%s passed whitelist auth. Secure IP: %s | Connected IP: %s", GetPlayerNameEx(extraid), secureip, GetPlayerIpEx(extraid));
 					Log("logs/whitelist.log", string);

@@ -1,20 +1,10 @@
 /*
-
-	 /$$   /$$  /$$$$$$          /$$$$$$$  /$$$$$$$
-	| $$$ | $$ /$$__  $$        | $$__  $$| $$__  $$
-	| $$$$| $$| $$  \__/        | $$  \ $$| $$  \ $$
-	| $$ $$ $$| $$ /$$$$ /$$$$$$| $$$$$$$/| $$$$$$$/
-	| $$  $$$$| $$|_  $$|______/| $$__  $$| $$____/
-	| $$\  $$$| $$  \ $$        | $$  \ $$| $$
-	| $$ \  $$|  $$$$$$/        | $$  | $$| $$
-	|__/  \__/ \______/         |__/  |__/|__/
-
 						Business System
 
-				Next Generation Gaming, LLC
-	(created by Next Generation Gaming Development Team)
+				Astrix Gaming, LLC
+	(created by Astrix Gaming Development Team)
 					
-	* Copyright (c) 2016, Next Generation Gaming, LLC
+	* Copyright (c) 2024, Astrix Gaming, LLC
 	*
 	* All rights reserved.
 	*
@@ -2376,7 +2366,7 @@ CMD:sellbiz(playerid, params[])
 		}
 
 		format(string, sizeof(string), "UPDATE `accounts` SET `Business` = "#INVALID_BUSINESS_ID", `BusinessRank` = 0 WHERE `Business` = '%d'", i);
-				mysql_tquery(MainPipeline, string, "OnQueryFinish", "i", SENDDATA_THREAD, playerid);
+		mysql_tquery(MainPipeline, string, "OnQueryFinish", "i", SENDDATA_THREAD, playerid);
 		return 1;
     }
     else
@@ -2388,7 +2378,9 @@ CMD:sellbiz(playerid, params[])
 
 CMD:buybiz(playerid, params[])
 {
-    if(PlayerInfo[playerid][pBusiness] != INVALID_BUSINESS_ID) return SendClientMessageEx(playerid, COLOR_GREY, "You already own a business!");
+    if(PlayerInfo[playerid][pBusiness] != INVALID_BUSINESS_ID)
+		return SendClientMessageEx(playerid, COLOR_GREY, "You already own a business!");
+
 	for(new i = 0; i < sizeof(Businesses); i++)
 	{
 	    if(IsPlayerInRangeOfPoint(playerid, 2.0, Businesses[i][bExtPos][0], Businesses[i][bExtPos][1], Businesses[i][bExtPos][2]))

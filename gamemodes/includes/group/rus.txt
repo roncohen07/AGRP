@@ -1,14 +1,14 @@
-C:\Users\HomePC2\Documents\GitHub\NGG-V3--REFIX-\gamemodes\includes\group\gangtags.pwn(21) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "PVAR_GANGTAGTEXT"
-C:\Users\HomePC2\Documents\GitHub\NGG-V3--REFIX-\gamemodes\includes\group\gangtags.pwn(21) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "PVAR_GANGTAGTEXT"
-C:\Users\HomePC2\Documents\GitHub\NGG-V3--REFIX-\gamemodes\includes\group\gangtags.pwn(27) : îøèáêà 017: íåîáúÿâëåííûé ñèìâîë "arrAntiCheat"
-C:\Users\HomePC2\Documents\GitHub\NGG-V3--REFIX-\gamemodes\includes\group\gangtags.pwn(27) : ïðåäóïðåæäåíèå 215: âûðàæåíèå íå èìååò ýôôåêòà
-C:\Users\HomePC2\Documents\GitHub\NGG-V3--REFIX-\gamemodes\includes\group\gangtags.pwn(27) : îøèáêà 001: îæèäàëñÿ òîêåí ";", íî íàéäåí "]"
-C:\Users\HomePC2\Documents\GitHub\NGG-V3--REFIX-\gamemodes\includes\group\gangtags.pwn(27) : îøèáêà 029: íåïðàâèëüíîå âûðàæåíèå, ïðèíÿò íîëü
-C:\Users\HomePC2\Documents\GitHub\NGG-V3--REFIX-\gamemodes\includes\group\gangtags.pwn(27) : ôàòàëüíàÿ îøèáêà 107: ñëèøêîì ìíîãî îøèáîê íà îäíîé ñòðîêå
+C:\Users\ronco\Desktop\Ron\NGG-V3.0\gamemodes\includes\group\gangtags.pwn(21) : מרטבךא 017: םומבתגכוםםי סטלגמכ "PVAR_GANGTAGTEXT"
+C:\Users\ronco\Desktop\Ron\NGG-V3.0\gamemodes\includes\group\gangtags.pwn(21) : מרטבךא 017: םומבתגכוםםי סטלגמכ "PVAR_GANGTAGTEXT"
+C:\Users\ronco\Desktop\Ron\NGG-V3.0\gamemodes\includes\group\gangtags.pwn(27) : מרטבךא 017: םומבתגכוםםי סטלגמכ "arrAntiCheat"
+C:\Users\ronco\Desktop\Ron\NGG-V3.0\gamemodes\includes\group\gangtags.pwn(27) : ןנוהףןנוזהוםטו 215: גנאזוםטו םו טלווע ‎פפוךעא
+C:\Users\ronco\Desktop\Ron\NGG-V3.0\gamemodes\includes\group\gangtags.pwn(27) : מרטבךא 001: מזטהאכס עמךום ";", םמ םאיהום "]"
+C:\Users\ronco\Desktop\Ron\NGG-V3.0\gamemodes\includes\group\gangtags.pwn(27) : מרטבךא 029: םוןנאגטכםמו גנאזוםטו, ןנטםע םמכ
+C:\Users\ronco\Desktop\Ron\NGG-V3.0\gamemodes\includes\group\gangtags.pwn(27) : פאעאכםא מרטבךא 107: סכטרךמל לםמדמ מרטבמך םא מהםמי סענמךו
 
-Êîìïèëÿöèÿ îñòàíîâëåíà.
+ֺמלןטכצט מסעאםמגכוםא.
 
 Pawn compiler 3.2.3664	 	 	Copyright (c) 1997-2016, ITB CompuPhase
 
 
-Îøèáîê:6.
+־רטבמך:6.

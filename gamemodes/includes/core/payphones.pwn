@@ -181,27 +181,28 @@ LoadPayPhones() {
 forward OnLoadPayPhones();
 public OnLoadPayPhones()
 {
-	new iRows;
-	cache_get_row_count(iRows);
-	if(!iRows) return print("[Pay Phones] No pay phones were found in the database.");
-	new iRow, value, Float:fValue;
+    new iRows;
+    cache_get_row_count(iRows);
+    if (!iRows) return print("[Pay Phones] No pay phones were found in the database.");
 
- 	for(iRow = 0; iRow < iRows; ++iRow) {
+    new iRow, value, Float:fValue;
 
+    for (iRow = 0; iRow < iRows; ++iRow)
+    {
+        cache_get_value_name_int(iRow, "number", arrPayPhoneData[iRow][pp_iNumber]);
+        arrPayPhoneData[iRow][pp_iCallerID] = INVALID_PLAYER_ID;
 
-		cache_get_value_name_int(iRow, "number", arrPayPhoneData[iRow][pp_iNumber]);
-		arrPayPhoneData[iRow][pp_iCallerID] = INVALID_PLAYER_ID;
+        cache_get_value_name_float(iRow, "posx", arrPayphone[iRow][ppx]);
+        cache_get_value_name_float(iRow, "posy", arrPayphone[iRow][ppy]);
+        cache_get_value_name_float(iRow, "posz", arrPayphone[iRow][ppz]);
+        cache_get_value_name_float(iRow, "rotz", arrPayphone[iRow][pprotz]);
+        cache_get_value_name_int(iRow, "vw", arrPayphone[iRow][ppvw]);
+        cache_get_value_name_int(iRow, "int", arrPayphone[iRow][ppint]);
 
-		cache_get_value_name_float(iRow, "posx",arrPayphone[iRow][ppx]);
-			cache_get_value_name_float(iRow,"posy",arrPayphone[iRow][ppy]);
-			cache_get_value_name_float(iRow,"posz",arrPayphone[iRow][ppz]);
-			cache_get_value_name_float(iRow,"rotz",arrPayphone[iRow][pprotz]);
-			cache_get_value_name_int(iRow,"vw",arrPayphone[iRow][ppvw]);
-			cache_get_value_name_int(iRow,"int",arrPayphone[iRow][ppint]);
-			
-	    	ProcessPayPhone(iRow,arrPayphone[iRow][ppx],arrPayphone[iRow][ppy],arrPayphone[iRow][ppz],arrPayphone[iRow][pprotz],arrPayphone[iRow][ppvw],arrPayphone[iRow][ppint]);
-	}
-	return printf("[MySQL] Loaded %i pay phones from database.", iRows);
+        ProcessPayPhone(iRow, arrPayphone[iRow][ppx], arrPayphone[iRow][ppy], arrPayphone[iRow][ppz], arrPayphone[iRow][pprotz], arrPayphone[iRow][ppvw], arrPayphone[iRow][ppint]);
+    }
+
+    return printf("[MySQL] Loaded %i pay phones from the database.", iRows);
 }
 
 forward OnCreatePayPhone(playerid, i, Float:X, Float:Y, Float:Z, Float:RZ, iVW, iINT); 

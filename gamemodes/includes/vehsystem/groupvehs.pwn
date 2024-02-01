@@ -131,7 +131,7 @@ DynVeh_Save(iDvSlotID) {
     new szMiscArrays11[5000];
     new szMiscArrays12[5000];
     new szMiscArrays13[5000];
-    new szMiscArrays14[5000];
+    //new szMiscArrays14[5000];
 	new
 		i = 0;
 
@@ -186,7 +186,7 @@ DynVeh_Save(iDvSlotID) {
 	}
 
 	for(i = 0; i != MAX_DV_MODS; ++i) mysql_format(MainPipeline, szMiscArray, sizeof szMiscArray, "UPDATE `groupvehs` SET `vMod%d` = %i WHERE `id` = %i", i, DynVehicleInfo[iDvSlotID][gv_iMod][i],iDvSlotID); mysql_tquery(MainPipeline, szMiscArray, "OnQueryFinish", "ii", SENDDATA_THREAD, INVALID_PLAYER_ID);
-return 1;
+	return 1;
 }
 
 stock DynVeh_Spawn(iDvSlotID, free = 0)

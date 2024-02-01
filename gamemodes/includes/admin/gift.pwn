@@ -1,21 +1,5 @@
 /*
-
-	 /$$   /$$  /$$$$$$          /$$$$$$$  /$$$$$$$
-	| $$$ | $$ /$$__  $$        | $$__  $$| $$__  $$
-	| $$$$| $$| $$  \__/        | $$  \ $$| $$  \ $$
-	| $$ $$ $$| $$ /$$$$ /$$$$$$| $$$$$$$/| $$$$$$$/
-	| $$  $$$$| $$|_  $$|______/| $$__  $$| $$____/
-	| $$\  $$$| $$  \ $$        | $$  \ $$| $$
-	| $$ \  $$|  $$$$$$/        | $$  | $$| $$
-	|__/  \__/ \______/         |__/  |__/|__/
-
 						Gift System
-
-				Next Generation Gaming, LLC
-	(created by Next Generation Gaming Development Team)
-					
-	* Copyright (c) 2016, Next Generation Gaming, LLC
-	*
 	* All rights reserved.
 	*
 	* Redistribution and use in source and binary forms, with or without modification,
@@ -42,8 +26,8 @@ stock GiftPlayer(playerid, giveplayerid, gtype = 2) // Default is the normal gif
 {
 	if(gtype == 1)
 	{
-		if(GetPVarInt(giveplayerid, "GiftFail") >= 20) 
-		{ 
+		if(GetPVarInt(giveplayerid, "GiftFail") >= 20)
+		{
 			new string[128];
 			GivePlayerCash(giveplayerid, 20000);
 			SendClientMessageEx(giveplayerid, COLOR_GRAD2, "Congratulations, you have won $20,000!");

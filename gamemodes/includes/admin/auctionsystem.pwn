@@ -11,10 +11,10 @@
 
 						Auction System
 
-				Next Generation Gaming, LLC
-	(created by Next Generation Gaming Development Team)
+				Astrix Gaming, LLC
+	(created by Astrix Gaming Development Team)
 					
-	* Copyright (c) 2016, Next Generation Gaming, LLC
+	* Copyright (c) 2016, Astrix Gaming, LLC
 	*
 	* All rights reserved.
 	*
